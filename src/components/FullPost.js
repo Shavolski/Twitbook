@@ -65,6 +65,7 @@ function FullPost(props) {
                 </Typography>
 
                 <Button size="small" className={classes.userNameButton}>
+                  {/* Filters the username and matches it with the current post rendered */}
                   {props.allData.filter(user => props.allData.id === props.postData.userId ).map(data =>
                       <Link
                       style={{textDecoration:'none', color:'#007AFF'}}

@@ -12,6 +12,7 @@ function Home(props) {
           <Navbar allData={props.allData}/>
           <Box>
             <Box>
+              {/* The list of posts */}
               <ListPost allData={props.allData} postData={props.postData}/>
             </Box>
           </Box>

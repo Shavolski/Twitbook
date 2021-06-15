@@ -11,8 +11,8 @@ import '@fontsource/roboto';
 
 function App() {
 
-  const [allData, setAllData] = useState([]);
-  const [ postData, setPostData ] = useState([]);
+  const [allData, setAllData] = useState([]); //State for user data
+  const [ postData, setPostData ] = useState([]); //State for post data
 
   const fetchUserData = async () => {
     return await axios.get("http://jsonplaceholder.typicode.com/users");//user endpoint
@@ -30,7 +30,7 @@ function App() {
       setAllData(response.data)
     })
     .catch(error => {
-      console.log('The was an error grabbing this data:' + error);
+      console.log('The was an error grabbing the user data:' + error);
     })
 
   }, []);
@@ -43,7 +43,7 @@ function App() {
       setPostData(response.data)
     })
     .catch(error => {
-      console.log('The was an error grabbing this data:' + error);
+      console.log('The was an error grabbing the post data:' + error);
     })
 
   }, []);

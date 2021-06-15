@@ -82,19 +82,17 @@ const useStyles = makeStyles((theme) => ({
 function Search(props) {
   const classes = useStyles();
 
+  const [filteredData,setFilteredData] = useState(props.allData); //State that filters user data
+  const [showMenu, setshowMenu] = useState(false); //State that displays the menu that holds the username list
+  const [value, setValue] = useState(''); //State when data is taken as value when a user uses the input to search for a username
 
-  // This will hold all the data retrieved and the second will copy the 2 states provided.
-  //const [allData,setAllData] = useState([]);
-  const [filteredData,setFilteredData] = useState(props.allData);
-  const [showMenu, setshowMenu] = useState(false);
-  const [value, setValue] = useState('');
-
-  //This event will filter usernames based on what you typed
+  //This event will filter usernames based on what you typed and also display the username list in a menu
   const handleSearch = (event) =>{
 
     if (!showMenu){
       setshowMenu(true);
     }
+
     const value = event.target.value;
 
     setValue(value);
@@ -128,13 +126,16 @@ function Search(props) {
               </div>
             </Box>
 
-            { showMenu && (
+            {/* This will display the menu with the username list once the user types in the inputbox */}
+            { true && (
             <Box borderRadius={16}>
-              <List className={classes.root} component="nav" aria-label="secondary mailbox folders">
+              <List className={classes.root} component="nav" aria-label="list of usernames">
+                {/* Filters usernames to match what you typed in the inputbox */}
                 {filteredData.map((value,index)=>{
                   return(
                     <ListItem button key={value.id} style={{display:'block'}}>
                       <ListItemText>
+                        {/* This will lead you to the user details page */}
                         <Link to={{
                           pathname:`/users/${value.username}`,
                           state:{
