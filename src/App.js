@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
-import Home from "./components/Home/Home";
-import Users from "./components/User/Users";
-import FullPost from "./components/Posts/FullPost";
-import Error from "./components/Error/Error";
+import Home from "./HomePage/Home/Home";
+import Users from "./UserPage/User/Users";
+import FullPost from "./HomePage/Posts/FullPost/FullPost";
+import Error from "./Shared/Error/Error";
 import "@fontsource/roboto";
 
 const App = () => {
@@ -47,12 +47,12 @@ const App = () => {
     <main>
       <Switch>
         <Route exact path="/">
-          <Home allData={userData} postData={postData} />
+          <Home userData={userData} postData={postData} />
         </Route>
         <Route path="/users/:username" exact component={Users}></Route>
         <Route path="/post/:title" exact>
           {" "}
-          <FullPost allData={userData} postData={postData} />
+          <FullPost userData={userData} postData={postData} />
         </Route>
         <Route component={Error} />
       </Switch>
