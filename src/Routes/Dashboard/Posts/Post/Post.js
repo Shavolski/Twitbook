@@ -6,7 +6,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import AuthorNameButton from "../../../Shared/AuthorButton/AuthorNameButton.js";
+import AuthorNameButton from "../../../../Shared/AuthorButton/AuthorNameButton.js";
 
 //This is for the menu list when searching for usernames
 const useStyles = makeStyles((theme) => ({

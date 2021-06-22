@@ -1,11 +1,11 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Navbar from "../../../Shared/Navbar/Navbar";
+import Navbar from "../../../../Shared/Navbar/Navbar";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import AuthorNameButton from "../../../Shared/AuthorButton/AuthorNameButton.js";
+import AuthorNameButton from "../../../../Shared/AuthorButton/AuthorNameButton.js";
 
 const useStyles = makeStyles({
   root: {

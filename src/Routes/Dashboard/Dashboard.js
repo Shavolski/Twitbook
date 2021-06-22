@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../Shared/Navbar/Navbar";
 import Box from "@material-ui/core/Box";
-import PostList from "./../Posts/PostList/PostList";
+import PostList from "./Posts/PostList/PostList";
 
 function Dashboard({ userData, postData }) {
   return (

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
-import Dashboard from "./Dashboard/Dashboard/Dashboard";
-import UserDetails from "./UserPage/UserDetails/UserDetails";
-import PostDetails from "./Dashboard/Posts/PostDetails/PostDetails";
+import Dashboard from "./Routes/Dashboard/Dashboard";
+import UserDetails from "./Routes/Dashboard/UserPage/UserDetails/UserDetails";
+import PostDetails from "./Routes/Dashboard/Posts/PostDetails/PostDetails";
 import Error from "./Shared/Error/Error";
 import "@fontsource/roboto";
 
