@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //This let's the user search for usernames available.
-const CardPost = ({ post, user, index }) => {
+const Post = ({ post, user, index }) => {
   const classes = useStyles();
 
   return (
@@ -63,4 +63,4 @@ const CardPost = ({ post, user, index }) => {
     </Grid>
   );
 };
-export default CardPost;
+export default Post;

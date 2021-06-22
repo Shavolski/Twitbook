@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-function FullPost({ post, user, index }) {
+function PostDetails({ post, user, index }) {
   const classes = useStyles();
   const location = useLocation({});
 
@@ -66,4 +66,4 @@ function FullPost({ post, user, index }) {
     </div>
   );
 }
-export default FullPost;
+export default PostDetails;

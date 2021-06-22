@@ -1,19 +1,19 @@
 import React from "react";
 import Navbar from "../../Shared/Navbar/Navbar";
 import Box from "@material-ui/core/Box";
-import ListPost from "./../Posts/ListPost/ListPost";
+import PostList from "./../Posts/PostList/PostList";
 
-function Home({ userData, postData }) {
+function Dashboard({ userData, postData }) {
   return (
     <div style={{ background: "#F2F2F7", width: "100%" }}>
       <Navbar userData={userData} />
       <Box>
         <Box>
           {/* The list of posts */}
-          <ListPost userData={userData} postData={postData} />
+          <PostList userData={userData} postData={postData} />
         </Box>
       </Box>
     </div>
   );
 }
-export default Home;
+export default Dashboard;

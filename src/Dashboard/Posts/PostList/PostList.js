@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import CardPost from "../CardPost/CardPost";
+import Post from "../Post/Post";
 //import CircularProgress from "@material-ui/core/CircularProgress";
 
 //This is for the menu list when searching for usernames
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ListPost = ({ userData, postData }) => {
+const PostList = ({ userData, postData }) => {
   const classes = useStyles();
 
   return (
@@ -34,10 +34,10 @@ const ListPost = ({ userData, postData }) => {
       <Grid container spacing={4} align="left" className={classes.mainGrid}>
         {postData.map((post, index) => {
           const user = userData.find((user) => user.id === post.userId);
-          return <CardPost post={post} user={user} key={index} />;
+          return <Post post={post} user={user} key={index} />;
         })}
       </Grid>
     </Container>
   );
 };
-export default ListPost;
+export default PostList;

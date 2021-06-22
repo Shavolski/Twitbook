@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
-import Home from "./HomePage/Home/Home";
-import Users from "./UserPage/User/Users";
-import FullPost from "./HomePage/Posts/FullPost/FullPost";
+import Dashboard from "./Dashboard/Dashboard/Dashboard";
+import UserDetails from "./UserPage/UserDetails/UserDetails";
+import PostDetails from "./Dashboard/Posts/PostDetails/PostDetails";
 import Error from "./Shared/Error/Error";
 import "@fontsource/roboto";
 
@@ -47,12 +47,12 @@ const App = () => {
     <main>
       <Switch>
         <Route exact path="/">
-          <Home userData={userData} postData={postData} />
+          <Dashboard userData={userData} postData={postData} />
         </Route>
-        <Route path="/users/:username" exact component={Users}></Route>
+        <Route path="/users/:username" exact component={UserDetails}></Route>
         <Route path="/post/:title" exact>
           {" "}
-          <FullPost userData={userData} postData={postData} />
+          <PostDetails userData={userData} postData={postData} />
         </Route>
         <Route component={Error} />
       </Switch>
