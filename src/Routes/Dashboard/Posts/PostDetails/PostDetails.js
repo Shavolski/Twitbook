@@ -32,11 +32,8 @@ function PostDetails({ post, user, index }) {
   const classes = useStyles();
   const location = useLocation({});
 
-  //const title = props.match.params.title;
   const { title, body } = location.state;
-  //const match = useRouteMatch("/post/${postData.title}");
 
-  //console.log(location);
   return (
     <div style={{ backgroundColor: "#F2F2F7", height: "120vh" }}>
       <Navbar />

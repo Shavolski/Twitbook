@@ -9,11 +9,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 
-//Will be used to transfer data between components
-
-//import ListPost from './ListPost';
-
-//This is for the menu list when searching for usernames
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -75,15 +70,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//This let's the user search for usernames available.
 function Search(props) {
   const classes = useStyles();
 
-  const [filteredData, setFilteredData] = useState(props.userData); //State that filters user data
-  const [showMenu, setshowMenu] = useState(false); //State that displays the menu that holds the username list
-  const [value, setValue] = useState(""); //State when data is taken as value when a user uses the input to search for a username
+  const [filteredData, setFilteredData] = useState(props.userData);
+  const [showMenu, setshowMenu] = useState(false);
+  const [value, setValue] = useState("");
 
-  //This event will filter usernames based on what you typed and also display the username list in a menu
   const handleSearch = (event) => {
     if (!showMenu) {
       setshowMenu(true);
@@ -92,12 +85,11 @@ function Search(props) {
     const value = event.target.value;
 
     setValue(value);
-    //console.log(value);
 
     const result = props.userData.filter((data) => {
       return data.username.search(value.toLowerCase()) !== -1;
     });
-    setFilteredData(result); //This will display the username data onto the menu
+    setFilteredData(result);
   };
 
   return (
@@ -124,7 +116,6 @@ function Search(props) {
           </div>
         </Box>
 
-        {/* This will display the menu with the username list once the user types in the inputbox */}
         {showMenu && (
           <Box borderRadius={16}>
             <List
@@ -137,7 +128,6 @@ function Search(props) {
                 return (
                   <ListItem button key={value.id} style={{ display: "block" }}>
                     <ListItemText>
-                      {/* This will lead you to the user details page */}
                       <Link
                         to={{
                           pathname: `/users/${value.username}`,

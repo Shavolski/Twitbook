@@ -19,11 +19,9 @@ const App = () => {
     return await axios.get("https://jsonplaceholder.typicode.com/posts");
   };
 
-  //This grabs the user endpoint and spits out the data.
   useEffect(() => {
     fetchUserData()
       .then((response) => {
-        //console.log(response.data);
         setUserData(response.data);
       })
       .catch((error) => {
@@ -35,7 +33,6 @@ const App = () => {
   useEffect(() => {
     fetchPostData()
       .then((response) => {
-        //console.log(response.data);
         setPostData(response.data);
       })
       .catch((error) => {

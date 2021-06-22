@@ -3,9 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Post from "../Post/Post";
-//import CircularProgress from "@material-ui/core/CircularProgress";
 
-//This is for the menu list when searching for usernames
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: "100px",

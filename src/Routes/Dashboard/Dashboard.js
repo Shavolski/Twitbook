@@ -9,7 +9,6 @@ function Dashboard({ userData, postData }) {
       <Navbar userData={userData} />
       <Box>
         <Box>
-          {/* The list of posts */}
           <PostList userData={userData} postData={postData} />
         </Box>
       </Box>

@@ -8,7 +8,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import AuthorNameButton from "../../../../Shared/AuthorButton/AuthorNameButton.js";
 
-//This is for the menu list when searching for usernames
 const useStyles = makeStyles((theme) => ({
   root: {},
   mainGrid: {
@@ -30,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//This let's the user search for usernames available.
 const Post = ({ post, user, index }) => {
   const classes = useStyles();
 

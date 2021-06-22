@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-//This is for the menu list when searching for usernames
 const useStyles = makeStyles((theme) => ({
   userNameButton: {
     fontFamily: "Roboto",
@@ -18,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//This let's the user search for usernames available.
 const AuthorNameButton = ({ post, user, index }) => {
   const classes = useStyles();
 

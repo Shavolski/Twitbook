@@ -34,12 +34,10 @@ function Navbar(props) {
         <Container>
           <Toolbar className={classes.toolBar}>
             <Typography edge="start" variant="h6" className={classes.title}>
-              {/* It will lead you back to homepage */}
               <Link to="/" className={classes.titleName}>
                 TwitBook
               </Link>
             </Typography>
-            {/* Search input goes here */}
             <Search userData={props.userData} />
           </Toolbar>
         </Container>
