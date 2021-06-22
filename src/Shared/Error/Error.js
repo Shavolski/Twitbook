@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Error() {
+const Error = () => {
   const classes = useStyles();
   return (
     <div style={{ background: "#F2F2F7" }}>
@@ -68,5 +68,6 @@ function Error() {
       </Container>
     </div>
   );
-}
+};
+
 export default Error;

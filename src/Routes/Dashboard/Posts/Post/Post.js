@@ -61,4 +61,5 @@ const Post = ({ post, user, index }) => {
     </Grid>
   );
 };
+
 export default Post;

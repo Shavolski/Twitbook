@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-function PostDetails({ post, user, index }) {
+const PostDetails = ({ post, user, index }) => {
   const classes = useStyles();
   const location = useLocation({});
 
@@ -62,5 +62,6 @@ function PostDetails({ post, user, index }) {
       </Container>
     </div>
   );
-}
+};
+
 export default PostDetails;

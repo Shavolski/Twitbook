@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Navbar(props) {
+const Navbar = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -44,5 +44,6 @@ function Navbar(props) {
       </AppBar>
     </div>
   );
-}
+};
+
 export default Navbar;

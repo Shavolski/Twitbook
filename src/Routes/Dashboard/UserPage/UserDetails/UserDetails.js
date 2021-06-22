@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Users(props) {
+const Users = (props) => {
   const classes = useStyles();
   const location = useLocation({});
 
@@ -103,5 +103,6 @@ function Users(props) {
       </Container>
     </div>
   );
-}
+};
+
 export default Users;

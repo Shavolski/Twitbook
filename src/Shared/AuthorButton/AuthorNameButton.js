@@ -33,4 +33,5 @@ const AuthorNameButton = ({ post, user, index }) => {
     </Button>
   );
 };
+
 export default AuthorNameButton;

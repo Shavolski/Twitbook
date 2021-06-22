@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Search(props) {
+const Search = (props) => {
   const classes = useStyles();
 
   const [filteredData, setFilteredData] = useState(props.userData);
@@ -157,5 +157,6 @@ function Search(props) {
       </div>
     </div>
   );
-}
+};
+
 export default Search;

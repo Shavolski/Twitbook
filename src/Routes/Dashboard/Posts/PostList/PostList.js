@@ -38,4 +38,5 @@ const PostList = ({ userData, postData }) => {
     </Container>
   );
 };
+
 export default PostList;
