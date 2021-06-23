@@ -1,10 +1,10 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import Navbar from "../../../../Shared/Navbar/Appbar/Appbar";
+import Appbar from "shared/Appbar/Appbar";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import AuthorNameButton from "../../../../Shared/AuthorButton/AuthorNameButton.js";
+import AuthorNameButton from "shared/AuthorButton/AuthorNameButton.js";
 import { useStyles } from "./PostDetailsStyles";
 
 const PostDetails = ({ post, user, index }) => {
@@ -15,7 +15,7 @@ const PostDetails = ({ post, user, index }) => {
 
   return (
     <div className={classes.postDetailBC}>
-      <Navbar />
+      <Appbar />
       <Container id="fullpost">
         <Box className={classes.root}>
           <Typography

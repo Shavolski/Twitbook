@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-//import Navbar from "../Shared/Navbar/Navbar";
+import Appbar from "shared/Appbar/Appbar";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -8,16 +8,16 @@ import MailIcon from "@material-ui/icons/Mail";
 import Divider from "@material-ui/core/Divider";
 import { useStyles } from "./UserDetailsStyles";
 
-const Users = (props) => {
+const Users = ({ userData, match }) => {
   const classes = useStyles();
   const location = useLocation({});
 
-  const username = props.match.params.username;
+  const username = match.params.username;
   const { name, website, email } = location.state;
 
-  console.log(location);
   return (
     <div className={classes.userDetailsBC}>
+      <Appbar userData={userData} />
       <Container>
         <Box className={classes.root}>
           <Typography
