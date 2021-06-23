@@ -1,28 +1,8 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Post from "../Post/Post";
-
-const useStyles = makeStyles((theme) => ({
-  mainGrid: {
-    marginTop: "100px",
-  },
-  title: {
-    fontWeight: "600",
-    marginBottom: "10px",
-  },
-  userNameButton: {
-    fontFamily: "Roboto",
-    fontStyle: "normal",
-    fontWeight: "500",
-    fontSize: "10px",
-    lineHeight: "16px",
-    letterSpacing: "1.5px",
-    textTransform: "uppercase",
-    color: "#007AFF",
-  },
-}));
+import { useStyles } from "./PostListStyles";
 
 const PostList = ({ userData, postData }) => {
   const classes = useStyles();

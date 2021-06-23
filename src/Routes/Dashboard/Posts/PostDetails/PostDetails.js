@@ -1,32 +1,11 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Navbar from "../../../../Shared/Navbar/Navbar";
+import Navbar from "../../../../Shared/Navbar/Appbar/Appbar";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import AuthorNameButton from "../../../../Shared/AuthorButton/AuthorNameButton.js";
-
-const useStyles = makeStyles({
-  root: {
-    height: "100%",
-    width: "100%",
-    maxWidth: 850,
-    margin: "72px 148px 72px 148px",
-  },
-  titleName: {
-    fontSize: "48px",
-    lineHeight: "56px",
-    fontWeight: "400",
-  },
-  titleBody: {
-    fontWeight: "400",
-    fontSize: "16px",
-    lineHeight: "24px",
-    letterSpacing: "0.5px",
-    fontStyle: "normal",
-  },
-});
+import { useStyles } from "./PostDetailsStyles";
 
 const PostDetails = ({ post, user, index }) => {
   const classes = useStyles();
@@ -35,7 +14,7 @@ const PostDetails = ({ post, user, index }) => {
   const { title, body } = location.state;
 
   return (
-    <div style={{ backgroundColor: "#F2F2F7", height: "120vh" }}>
+    <div className={classes.postDetailBC}>
       <Navbar />
       <Container id="fullpost">
         <Box className={classes.root}>
