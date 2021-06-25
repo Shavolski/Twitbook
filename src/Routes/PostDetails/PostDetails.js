@@ -1,18 +1,28 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Appbar from "shared/Appbar/Appbar";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import AuthorNameButton from "shared/AuthorButton/AuthorNameButton.js";
+import { useParams } from "react-router-dom";
+import { fetchSinglePost } from "shared/Utils/Api";
 import PropTypes from "prop-types";
 import { useStyles } from "./PostDetailsStyles";
 
-const PostDetails = ({ post, user, index }) => {
+const PostDetails = () => {
   const classes = useStyles();
-  const location = useLocation({});
+  const params = useParams();
 
-  const { title, body } = location.state;
+  const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      let post = await fetchSinglePost(params.id);
+
+      setPost(post.data);
+    };
+    fetchPost();
+  }, []);
 
   return (
     <div className={classes.postDetailBC}>
@@ -25,10 +35,8 @@ const PostDetails = ({ post, user, index }) => {
             className={classes.titleName}
             display="block"
           >
-            {title}
+            {post.title}
           </Typography>
-
-          <AuthorNameButton post={post} user={user} key={index} />
 
           <Typography
             variant="body1"
@@ -36,7 +44,7 @@ const PostDetails = ({ post, user, index }) => {
             display="block"
             className={classes.titleBody}
           >
-            {body}
+            {post.body}
           </Typography>
         </Box>
       </Container>
@@ -45,9 +53,7 @@ const PostDetails = ({ post, user, index }) => {
 };
 
 PostDetails.propTypes = {
-  user: PropTypes.string,
   post: PropTypes.string,
-  index: PropTypes.string,
 };
 
 export default PostDetails;

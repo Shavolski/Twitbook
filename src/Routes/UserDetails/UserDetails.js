@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Appbar from "shared/Appbar/Appbar";
 import Container from "@material-ui/core/Container";
@@ -6,19 +6,30 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import MailIcon from "@material-ui/icons/Mail";
 import Divider from "@material-ui/core/Divider";
+import { useParams } from "react-router-dom";
+import { fetchSingleUser } from "shared/Utils/Api";
 import PropTypes from "prop-types";
 import { useStyles } from "./UserDetailsStyles";
 
-const Users = ({ userData, match }) => {
+const Users = () => {
   const classes = useStyles();
-  const location = useLocation({});
 
-  const username = match.params.username;
-  const { name, website, email } = location.state;
+  const params = useParams();
+
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      let user = await fetchSingleUser(params.id);
+
+      setUser(user.data);
+    };
+    fetchUser();
+  }, []);
 
   return (
     <div className={classes.userDetailsBC}>
-      <Appbar userData={userData} />
+      <Appbar />
       <Container>
         <Box className={classes.root}>
           <Typography
@@ -27,7 +38,7 @@ const Users = ({ userData, match }) => {
             className={classes.titleName}
             display="block"
           >
-            {name}
+            {user.name}
           </Typography>
           <Typography
             variant="h6"
@@ -35,7 +46,7 @@ const Users = ({ userData, match }) => {
             display="block"
             className={classes.titleUserName}
           >
-            @{username}
+            @{user.username}
           </Typography>
 
           <Box display="inline">
@@ -46,7 +57,7 @@ const Users = ({ userData, match }) => {
               display="inline"
               className={classes.titleUserDetails}
             >
-              {website}
+              {user.website}
             </Typography>
           </Box>
           <Box
@@ -61,7 +72,7 @@ const Users = ({ userData, match }) => {
               display="inline"
               className={classes.titleUserDetails}
             >
-              {email}
+              {user.email}
             </Typography>
           </Box>
         </Box>
@@ -74,8 +85,7 @@ const Users = ({ userData, match }) => {
 };
 
 Users.propTypes = {
-  userData: PropTypes.string,
-  match: PropTypes.string,
+  user: PropTypes.string,
 };
 
 export default Users;

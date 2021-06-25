@@ -70,13 +70,7 @@ const Search = ({ userData }) => {
                     <ListItemText>
                       <Link
                         to={{
-                          pathname: `/users/${value.username}`,
-                          state: {
-                            name: value.name,
-                            website: value.website,
-                            email: value.email,
-                            username: value.username,
-                          },
+                          pathname: `/users/${value.id}`,
                         }}
                         className={classes.listItemLink}
                       >

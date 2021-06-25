@@ -11,8 +11,12 @@ const fetchPostData = async () => {
   return await axios.get(`${base_URL}/posts`);
 };
 
-// const fetchSinglePost = async () => {
-//   return await axios.get(`${base_URL}/posts/${id}`);
-// };
+const fetchSinglePost = async (id) => {
+  return await axios.get(`${base_URL}/posts/${id}`);
+};
 
-export { fetchPostData, fetchUserData };
+const fetchSingleUser = async (id) => {
+  return await axios.get(`${base_URL}/users/${id}`);
+};
+
+export { fetchPostData, fetchUserData, fetchSinglePost, fetchSingleUser };

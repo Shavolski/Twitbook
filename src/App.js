@@ -13,8 +13,8 @@ const App = () => {
         <Route exact path="/">
           <Dashboard />
         </Route>
-        <Route path="/users/:username" exact component={UserDetails}></Route>
-        <Route path="/post/:title" exact>
+        <Route path="/users/:id" exact component={UserDetails}></Route>
+        <Route path="/post/:id" exact>
           {" "}
           <PostDetails />
         </Route>

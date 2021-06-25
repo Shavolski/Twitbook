@@ -18,11 +18,7 @@ const Post = ({ post, user, index }) => {
         <CardContent>
           <Link
             to={{
-              pathname: `/post/${post.title}`,
-              state: {
-                title: post.title,
-                body: post.body,
-              },
+              pathname: `/post/${post.id}`,
             }}
             className={classes.cardLink}
           >
