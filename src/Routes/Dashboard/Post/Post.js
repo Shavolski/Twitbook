@@ -6,6 +6,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import AuthorNameButton from "shared/AuthorButton/AuthorNameButton.js";
+import PropTypes from "prop-types";
 import { useStyles } from "./PostStyles";
 
 const Post = ({ post, user, index }) => {
@@ -39,6 +40,12 @@ const Post = ({ post, user, index }) => {
       </Card>
     </Grid>
   );
+};
+
+Post.propTypes = {
+  user: PropTypes.string,
+  post: PropTypes.string,
+  index: PropTypes.string,
 };
 
 export default Post;

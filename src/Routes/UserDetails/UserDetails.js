@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import MailIcon from "@material-ui/icons/Mail";
 import Divider from "@material-ui/core/Divider";
+import PropTypes from "prop-types";
 import { useStyles } from "./UserDetailsStyles";
 
 const Users = ({ userData, match }) => {
@@ -70,6 +71,11 @@ const Users = ({ userData, match }) => {
       </Container>
     </div>
   );
+};
+
+Users.propTypes = {
+  userData: PropTypes.string,
+  match: PropTypes.string,
 };
 
 export default Users;

@@ -5,6 +5,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import AuthorNameButton from "shared/AuthorButton/AuthorNameButton.js";
+import PropTypes from "prop-types";
 import { useStyles } from "./PostDetailsStyles";
 
 const PostDetails = ({ post, user, index }) => {
@@ -41,6 +42,12 @@ const PostDetails = ({ post, user, index }) => {
       </Container>
     </div>
   );
+};
+
+PostDetails.propTypes = {
+  user: PropTypes.string,
+  post: PropTypes.string,
+  index: PropTypes.string,
 };
 
 export default PostDetails;

@@ -10,6 +10,7 @@ import {
   fetchUserData,
   fetchSinglePost,
 } from "shared/Utils/Api";
+import PropTypes from "prop-types";
 import { useStyles } from "./DashboardStyles";
 
 const Dashboard = () => {
@@ -50,6 +51,11 @@ const Dashboard = () => {
       </Box>
     </div>
   );
+};
+
+Dashboard.propTypes = {
+  userData: PropTypes.string,
+  postData: PropTypes.string,
 };
 
 export default Dashboard;

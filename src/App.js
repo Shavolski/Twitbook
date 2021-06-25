@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
-import axios from "axios";
 import Dashboard from "routes/Dashboard/Dashboard";
 import UserDetails from "routes/UserDetails/UserDetails";
 import PostDetails from "routes/PostDetails/PostDetails";

@@ -6,6 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Search from "./Search/Search";
 import Container from "@material-ui/core/Container";
+import PropTypes from "prop-types";
 import { useStyles } from "./AppbarStyles";
 
 const Appbar = ({ userData }) => {
@@ -27,6 +28,10 @@ const Appbar = ({ userData }) => {
       </AppBar>
     </div>
   );
+};
+
+Appbar.propTypes = {
+  userData: PropTypes.string,
 };
 
 export default Appbar;

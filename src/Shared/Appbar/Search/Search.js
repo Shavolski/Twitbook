@@ -7,12 +7,13 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
+import PropTypes from "prop-types";
 import { useStyles } from "./SearchStyles";
 
-const Search = (props) => {
+const Search = ({ userData }) => {
   const classes = useStyles();
 
-  const [filteredData, setFilteredData] = useState(props.userData);
+  const [filteredData, setFilteredData] = useState(userData);
   const [showMenu, setshowMenu] = useState(false);
   const [value, setValue] = useState("");
 
@@ -25,7 +26,7 @@ const Search = (props) => {
 
     setValue(value);
 
-    const result = props.userData.filter((data) => {
+    const result = userData.filter((data) => {
       return data.username.search(value.toLowerCase()) !== -1;
     });
     setFilteredData(result);
@@ -96,6 +97,10 @@ const Search = (props) => {
       </div>
     </div>
   );
+};
+
+Search.propTypes = {
+  userData: PropTypes.string,
 };
 
 export default Search;
