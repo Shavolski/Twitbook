@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Appbar from "shared/Appbar/Appbar";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Post from "./Post/Post";
+import {
+  fetchPostData,
+  fetchUserData,
+  fetchSinglePost,
+} from "shared/Utils/Api";
 import { useStyles } from "./DashboardStyles";
 
-const Dashboard = ({ userData, postData }) => {
+const Dashboard = () => {
   const classes = useStyles();
+  const [postData, setPostData] = useState([]);
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let users = await fetchUserData();
+      let posts = await fetchPostData();
+
+      setUserData(users.data);
+      setPostData(posts.data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className={classes.dashboardWidth}>
