@@ -33,21 +33,14 @@ const Dashboard = () => {
     <div className={classes.dashboardWidth}>
       <Appbar userData={userData} />
       <Box>
-        <Box>
-          <Container>
-            <Grid
-              container
-              spacing={4}
-              align="left"
-              className={classes.mainGrid}
-            >
-              {postData.map((post, index) => {
-                const user = userData.find((user) => user.id === post.userId);
-                return <Post post={post} user={user} key={index} />;
-              })}
-            </Grid>
-          </Container>
-        </Box>
+        <Container>
+          <Grid container spacing={4} align="left" className={classes.mainGrid}>
+            {postData.map((post, index) => {
+              const user = userData.find((user) => user.id === post.userId);
+              return <Post post={post} user={user} key={index} />;
+            })}
+          </Grid>
+        </Container>
       </Box>
     </div>
   );

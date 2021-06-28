@@ -34,61 +34,59 @@ const Search = ({ userData }) => {
 
   return (
     <div>
-      <div>
-        <Box
-          textAlign="center"
-          className={classes.borderSearch}
-          borderRadius={16}
-        >
-          <div className={classes.search}>
-            <SearchIcon className={classes.searchIcon} />
-            <InputBase
-              placeholder="Search for username"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "Search for username" }}
-              onChange={handleSearch}
-              value={value}
-              onBlur={() => setshowMenu(false)}
-            />
-          </div>
-        </Box>
+      <Box
+        textAlign="center"
+        className={classes.borderSearch}
+        borderRadius={16}
+      >
+        <div className={classes.search}>
+          <SearchIcon className={classes.searchIcon} />
+          <InputBase
+            placeholder="Search for username"
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ "aria-label": "Search for username" }}
+            onChange={handleSearch}
+            value={value}
+            onBlur={() => setshowMenu(false)}
+          />
+        </div>
+      </Box>
 
-        {showMenu && (
-          <Box borderRadius={16}>
-            <List
-              className={classes.root}
-              component="nav"
-              aria-label="list of usernames"
-            >
-              {/* Filters usernames to match what you typed in the inputbox */}
-              {filteredData.map((value, index) => {
-                return (
-                  <ListItem button key={value.id} className={classes.listItem}>
-                    <ListItemText>
-                      <Link
-                        to={{
-                          pathname: `/users/${value.id}`,
-                        }}
-                        className={classes.listItemLink}
-                      >
-                        {"@" + value.username}
-                      </Link>
-                    </ListItemText>
-                    <ListItemText className={classes.fullName} disabled>
-                      <Typography variant="caption" gutterBottom>
-                        {value.name}
-                      </Typography>
-                    </ListItemText>
-                  </ListItem>
-                );
-              })}
-            </List>
-          </Box>
-        )}
-      </div>
+      {showMenu && (
+        <Box borderRadius={16}>
+          <List
+            className={classes.root}
+            component="nav"
+            aria-label="list of usernames"
+          >
+            {/* Filters usernames to match what you typed in the inputbox */}
+            {filteredData.map((value, index) => {
+              return (
+                <ListItem button key={value.id} className={classes.listItem}>
+                  <ListItemText>
+                    <Link
+                      to={{
+                        pathname: `/users/${value.id}`,
+                      }}
+                      className={classes.listItemLink}
+                    >
+                      {"@" + value.username}
+                    </Link>
+                  </ListItemText>
+                  <ListItemText className={classes.fullName} disabled>
+                    <Typography variant="caption" gutterBottom>
+                      {value.name}
+                    </Typography>
+                  </ListItemText>
+                </ListItem>
+              );
+            })}
+          </List>
+        </Box>
+      )}
     </div>
   );
 };
