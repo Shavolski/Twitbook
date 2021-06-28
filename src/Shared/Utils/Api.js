@@ -19,4 +19,14 @@ const fetchSingleUser = async (id) => {
   return await axios.get(`${base_URL}/users/${id}`);
 };
 
-export { fetchPostData, fetchUserData, fetchSinglePost, fetchSingleUser };
+const fetchUserPosts = async (id) => {
+  return await axios.get(`${base_URL}/users/${id}/posts`);
+};
+
+export {
+  fetchPostData,
+  fetchUserData,
+  fetchSinglePost,
+  fetchSingleUser,
+  fetchUserPosts,
+};

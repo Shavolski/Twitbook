@@ -44,4 +44,15 @@ export const useStyles = makeStyles((theme) => ({
     height: "18px",
     marginBottom: "-4px",
   },
+  mainGrid: {
+    marginTop: "60px",
+  },
+  title: {
+    fontWeight: "normal",
+    marginBottom: "10px",
+  },
+  userPosts: {
+    backgroundColor: "transparent",
+    boxShadow: "10px 10px 5px transparent",
+  },
 }));
