@@ -23,4 +23,17 @@ export const useStyles = makeStyles((theme) => ({
     letterSpacing: "0.5px",
     fontStyle: "normal",
   },
+  mainGrid: {
+    marginTop: "100px",
+  },
+  title: {
+    fontWeight: "600",
+    fontSize: "17px",
+    lineHeight: "22px",
+    marginBottom: "10px",
+  },
+  userComments: {
+    backgroundColor: "transparent",
+    boxShadow: "10px 10px 5px transparent",
+  },
 }));

@@ -38,7 +38,6 @@ const Users = () => {
     fetchUserData();
   }, []);
 
-  console.log(user);
   return (
     <div className={classes.userDetailsBC}>
       <Appbar />

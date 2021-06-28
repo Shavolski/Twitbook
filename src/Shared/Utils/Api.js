@@ -23,10 +23,15 @@ const fetchUserPosts = async (id) => {
   return await axios.get(`${base_URL}/users/${id}/posts`);
 };
 
+const fetchUserPostsComments = async (id) => {
+  return await axios.get(`${base_URL}/posts/${id}/comments`);
+};
+
 export {
   fetchPostData,
   fetchUserData,
   fetchSinglePost,
   fetchSingleUser,
   fetchUserPosts,
+  fetchUserPostsComments,
 };
