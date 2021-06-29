@@ -115,13 +115,20 @@ const Users = () => {
                 <Grid item xs={12} key={index}>
                   <Card className={classes.userPosts} boxShadow={0}>
                     <CardContent>
-                      <Typography
-                        variant="h5"
-                        component="h2"
-                        className={classes.title}
+                      <Link
+                        to={{
+                          pathname: `/post/${posts.id}`,
+                        }}
+                        className={classes.cardLink}
                       >
-                        {posts.title}
-                      </Typography>
+                        <Typography
+                          variant="h5"
+                          component="h2"
+                          className={classes.title}
+                        >
+                          {posts.title}
+                        </Typography>
+                      </Link>
                       <Typography
                         variant="body2"
                         component="p"

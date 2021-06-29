@@ -55,4 +55,8 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: "transparent",
     boxShadow: "10px 10px 5px transparent",
   },
+  cardLink: {
+    textDecoration: "none",
+    color: "black",
+  },
 }));
