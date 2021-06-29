@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Appbar from "shared/Appbar/Appbar";
 import Container from "@material-ui/core/Container";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -19,6 +20,7 @@ const PostDetails = () => {
 
   const [post, setPost] = useState([]);
   const [userComments, setUserComments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -27,6 +29,7 @@ const PostDetails = () => {
 
       setPost(post.data);
       setUserComments(comment.data);
+      setLoading(false);
     };
     fetchPost();
   }, []);
@@ -35,62 +38,77 @@ const PostDetails = () => {
     <div className={classes.postDetailBC}>
       <Appbar />
       <Container id="fullpost">
-        <Box className={classes.root}>
-          <Typography
-            variant="h3"
-            gutterBottom
-            className={classes.titleName}
-            display="block"
+        {loading ? (
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="100vh"
           >
-            {post.title}
-          </Typography>
-
-          <Typography
-            variant="body1"
-            gutterBottom
-            display="block"
-            className={classes.titleBody}
-          >
-            {post.body}
-          </Typography>
-          <Container maxWidth="md">
-            <Grid
-              container
-              spacing={4}
-              align="left"
-              className={classes.mainGrid}
+            <CircularProgress />
+          </Box>
+        ) : (
+          <Box className={classes.root}>
+            <Typography
+              variant="h3"
+              gutterBottom
+              className={classes.titleName}
+              display="block"
             >
-              <Typography variant="h5" component="h2" className={classes.title}>
-                Comments
-              </Typography>
-              {userComments.map((comment, index) => {
-                return (
-                  <Grid item xs={12} key={index}>
-                    <Card className={classes.userComments} boxShadow={0}>
-                      <CardContent>
-                        <Typography
-                          variant="h5"
-                          component="h2"
-                          className={classes.title}
-                        >
-                          {comment.name}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          component="p"
-                          color="textSecondary"
-                        >
-                          {comment.body}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                    <Divider className={classes.bottomDivider} />
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </Container>
-        </Box>
+              {post.title}
+            </Typography>
+
+            <Typography
+              variant="body1"
+              gutterBottom
+              display="block"
+              className={classes.titleBody}
+            >
+              {post.body}
+            </Typography>
+            <Container maxWidth="md">
+              <Grid
+                container
+                spacing={4}
+                align="left"
+                className={classes.mainGrid}
+              >
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  className={classes.title}
+                >
+                  Comments
+                </Typography>
+                {userComments.map((comment, index) => {
+                  return (
+                    <Grid item xs={12} key={index}>
+                      <Card className={classes.userComments} boxShadow={0}>
+                        <CardContent>
+                          <Typography
+                            variant="h5"
+                            component="h2"
+                            className={classes.title}
+                          >
+                            {comment.name}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            component="p"
+                            color="textSecondary"
+                          >
+                            {comment.body}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                      <Divider className={classes.bottomDivider} />
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </Container>
+          </Box>
+        )}
       </Container>
     </div>
   );

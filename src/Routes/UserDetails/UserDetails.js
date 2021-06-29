@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Appbar from "shared/Appbar/Appbar";
 import Container from "@material-ui/core/Container";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -19,6 +20,8 @@ import {
 import PropTypes from "prop-types";
 import { useStyles } from "./UserDetailsStyles";
 
+//const delay = 2;
+
 const Users = () => {
   const classes = useStyles();
 
@@ -26,19 +29,34 @@ const Users = () => {
 
   const [user, setUser] = useState([]);
   const [userPosts, setUserPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserData = async () => {
       let user = await fetchSingleUser(params.id);
       let posts = await fetchUserPosts(params.id);
-
+      // let loadTimer = setTimeout(() => setLoading(false), delay * 1000);
+      //
+      // return () => {
+      //   clearTimeout(loadTimer);
+      // };
       setUser(user.data);
       setUserPosts(posts.data);
+      setLoading(false);
     };
     fetchUserData();
   }, []);
 
-  return (
+  return loading ? (
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+    >
+      <CircularProgress />
+    </Box>
+  ) : (
     <div className={classes.userDetailsBC}>
       <Appbar />
       <Container>

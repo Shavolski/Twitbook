@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Appbar from "shared/Appbar/Appbar";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -17,6 +18,7 @@ const Dashboard = () => {
   const classes = useStyles();
   const [postData, setPostData] = useState([]);
   const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +27,7 @@ const Dashboard = () => {
 
       setUserData(users.data);
       setPostData(posts.data);
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -34,12 +37,28 @@ const Dashboard = () => {
       <Appbar userData={userData} />
       <Box>
         <Container>
-          <Grid container spacing={4} align="left" className={classes.mainGrid}>
-            {postData.map((post, index) => {
-              const user = userData.find((user) => user.id === post.userId);
-              return <Post post={post} user={user} key={index} />;
-            })}
-          </Grid>
+          {loading ? (
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              minHeight="100vh"
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <Grid
+              container
+              spacing={4}
+              align="left"
+              className={classes.mainGrid}
+            >
+              {postData.map((post, index) => {
+                const user = userData.find((user) => user.id === post.userId);
+                return <Post post={post} user={user} key={index} />;
+              })}
+            </Grid>
+          )}
         </Container>
       </Box>
     </div>
