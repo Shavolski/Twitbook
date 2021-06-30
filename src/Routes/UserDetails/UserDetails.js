@@ -47,16 +47,7 @@ const Users = () => {
     fetchUserData();
   }, []);
 
-  return loading ? (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-    >
-      <CircularProgress />
-    </Box>
-  ) : (
+  return (
     <div className={classes.userDetailsBC}>
       <Appbar />
       <Container>
@@ -109,39 +100,55 @@ const Users = () => {
           <Divider className={classes.bottomDivider} />
         </Container>
         <Container maxWidth="md">
-          <Grid container spacing={4} align="left" className={classes.mainGrid}>
-            {userPosts.map((posts, index) => {
-              return (
-                <Grid item xs={12} key={index}>
-                  <Card className={classes.userPosts} boxShadow={0}>
-                    <CardContent>
-                      <Link
-                        to={{
-                          pathname: `/post/${posts.id}`,
-                        }}
-                        className={classes.cardLink}
-                      >
-                        <Typography
-                          variant="h5"
-                          component="h2"
-                          className={classes.title}
+          {loading ? (
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              minHeight="100vh"
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <Grid
+              container
+              spacing={4}
+              align="left"
+              className={classes.mainGrid}
+            >
+              {userPosts.map((posts, index) => {
+                return (
+                  <Grid item xs={12} key={index}>
+                    <Card className={classes.userPosts} boxShadow={0}>
+                      <CardContent>
+                        <Link
+                          to={{
+                            pathname: `/post/${posts.id}`,
+                          }}
+                          className={classes.cardLink}
                         >
-                          {posts.title}
+                          <Typography
+                            variant="h5"
+                            component="h2"
+                            className={classes.title}
+                          >
+                            {posts.title}
+                          </Typography>
+                        </Link>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          color="textSecondary"
+                        >
+                          {posts.body}
                         </Typography>
-                      </Link>
-                      <Typography
-                        variant="body2"
-                        component="p"
-                        color="textSecondary"
-                      >
-                        {posts.body}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              );
-            })}
-          </Grid>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          )}
         </Container>
       </Container>
     </div>

@@ -31,7 +31,7 @@ const Post = ({ post, user, index }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <AuthorNameButton post={post} user={user} key={index} />
+          <AuthorNameButton user={user} />
         </CardActions>
       </Card>
     </Grid>

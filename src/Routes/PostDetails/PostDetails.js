@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Appbar from "shared/Appbar/Appbar";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -10,7 +11,11 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import AuthorNameButton from "shared/AuthorButton/AuthorNameButton.js";
 import { useParams } from "react-router-dom";
-import { fetchSinglePost, fetchUserPostsComments } from "shared/Utils/Api";
+import {
+  fetchSinglePost,
+  fetchUserPostsComments,
+  fetchSingleUser,
+} from "shared/Utils/Api";
 import PropTypes from "prop-types";
 import { useStyles } from "./PostDetailsStyles";
 
@@ -20,14 +25,17 @@ const PostDetails = () => {
 
   const [post, setPost] = useState([]);
   const [userComments, setUserComments] = useState([]);
+  const [userName, setUserName] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPost = async () => {
       let post = await fetchSinglePost(params.id);
       let comment = await fetchUserPostsComments(params.id);
+      let username = await fetchSingleUser(params.id);
 
       setPost(post.data);
+      setUserName(username.data);
       setUserComments(comment.data);
       setLoading(false);
     };
