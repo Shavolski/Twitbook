@@ -55,6 +55,10 @@ const Search = ({ userData, postData }) => {
   const [postValue, setPostValue] = useState("");
   const [tabValue, setTabValue] = React.useState(0);
 
+  const tabChange = (event, newTabValue) => {
+    setTabValue(newTabValue);
+  };
+
   const handleSearch = (event) => {
     if (!showMenu) {
       setshowMenu(true);
@@ -76,12 +80,9 @@ const Search = ({ userData, postData }) => {
     });
     setFilteredPostData(postResult);
   };
-  const tabChange = (event, newTabValue) => {
-    setTabValue(newTabValue);
-  };
 
   return (
-    <div onChange={handleSearch}>
+    <div>
       <Box
         textAlign="center"
         className={classes.borderSearch}
@@ -96,8 +97,10 @@ const Search = ({ userData, postData }) => {
               input: classes.inputInput,
             }}
             inputProps={{ "aria-label": "Search for username" }}
+            onChange={handleSearch}
             value={userValue}
             value={postValue}
+            onBlur={() => setshowMenu(false)}
           />
         </div>
       </Box>
@@ -107,7 +110,6 @@ const Search = ({ userData, postData }) => {
           <Tabs
             value={tabValue}
             onChange={tabChange}
-            onClose={() => setshowMenu(false)}
             aria-label="simple tabs example"
             indicatorColor="primary"
             textColor="primary"

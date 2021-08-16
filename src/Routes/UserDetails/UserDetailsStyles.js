@@ -5,7 +5,11 @@ export const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     maxWidth: 500,
-    margin: "72px 148px 32px 148px",
+    marginTop: "72px",
+    marginBottom: "32px",
+    [theme.breakpoints.up("lg")]: {
+      marginLeft: "151px",
+    },
   },
   userDetailsBC: {
     backgroundColor: "#F2F2F7",

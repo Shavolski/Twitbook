@@ -6,6 +6,8 @@ export const useStyles = makeStyles((theme) => ({
     maxWidth: 328,
     backgroundColor: "white",
     position: "absolute",
+    overflow: "auto",
+    maxHeight: 600,
   },
   listItem: {
     display: "block",

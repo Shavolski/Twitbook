@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Appbar from "shared/Appbar/Appbar";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Post from "./Post/Post";
-import {
-  fetchPostData,
-  fetchUserData,
-  fetchSinglePost,
-} from "shared/Utils/Api";
+import { fetchPostData, fetchUserData } from "shared/Utils/Api";
 import PropTypes from "prop-types";
 import { useStyles } from "./DashboardStyles";
 
@@ -34,7 +29,7 @@ const Dashboard = () => {
 
   return (
     <div className={classes.dashboardWidth}>
-      <Appbar userData={userData} />
+      <Appbar userData={userData} postData={postData} />
       <Box>
         <Container>
           {loading ? (
@@ -66,8 +61,8 @@ const Dashboard = () => {
 };
 
 Dashboard.propTypes = {
-  userData: PropTypes.string,
-  postData: PropTypes.string,
+  user: PropTypes.string,
+  post: PropTypes.string,
 };
 
 export default Dashboard;

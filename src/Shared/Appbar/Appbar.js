@@ -9,7 +9,7 @@ import Container from "@material-ui/core/Container";
 import PropTypes from "prop-types";
 import { useStyles } from "./AppbarStyles";
 
-const Appbar = ({ userData }) => {
+const Appbar = ({ userData, postData }) => {
   const classes = useStyles();
 
   return (
@@ -22,16 +22,12 @@ const Appbar = ({ userData }) => {
                 TwitBook
               </Link>
             </Typography>
-            <Search userData={userData} />
+            <Search userData={userData} postData={postData} />
           </Toolbar>
         </Container>
       </AppBar>
     </div>
   );
-};
-
-Appbar.propTypes = {
-  userData: PropTypes.string,
 };
 
 export default Appbar;

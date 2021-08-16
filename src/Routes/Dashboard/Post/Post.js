@@ -39,9 +39,9 @@ const Post = ({ post, user, index }) => {
 };
 
 Post.propTypes = {
-  user: PropTypes.string,
-  post: PropTypes.string,
-  index: PropTypes.string,
+  user: PropTypes.object,
+  post: PropTypes.object,
+  index: PropTypes.number,
 };
 
 export default Post;

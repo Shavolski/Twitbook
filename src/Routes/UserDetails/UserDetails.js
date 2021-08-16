@@ -51,7 +51,7 @@ const Users = () => {
     <div className={classes.userDetailsBC}>
       <Appbar />
       <Container>
-        <Box className={classes.root}>
+        <Container className={classes.root} align="left">
           <Typography
             variant="h3"
             gutterBottom
@@ -95,7 +95,7 @@ const Users = () => {
               {user.email}
             </Typography>
           </Box>
-        </Box>
+        </Container>
         <Container>
           <Divider className={classes.bottomDivider} />
         </Container>

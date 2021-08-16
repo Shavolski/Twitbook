@@ -9,6 +9,7 @@ const AuthorNameButton = ({ user }) => {
 
   return (
     <Link
+      data-testid={`author-btn-${user.id}`}
       component={Button}
       size="small"
       className={classes.userNameLink}

@@ -4,12 +4,11 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     height: "100%",
     width: "100%",
-    maxWidth: 850,
-    margin: "72px 148px 72px 148px",
+    marginTop: "72px",
   },
   postDetailBC: {
     backgroundColor: "#F2F2F7",
-    height: "120vh",
+    height: "150vh",
   },
   titleName: {
     fontSize: "48px",
@@ -27,10 +26,12 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "100px",
   },
   title: {
-    fontWeight: "600",
-    fontSize: "17px",
-    lineHeight: "22px",
-    marginBottom: "10px",
+    fontWeight: "400",
+    fontSize: "16px",
+    lineHeight: "24px",
+    letterSpacing: "0.5px",
+    fontStyle: "normal",
+    marginBottom: "5px",
   },
   userComments: {
     backgroundColor: "transparent",

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Appbar from "shared/Appbar/Appbar";
+import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
@@ -15,6 +16,8 @@ import {
   fetchSinglePost,
   fetchUserPostsComments,
   fetchSingleUser,
+  fetchPostData,
+  fetchUserData,
 } from "shared/Utils/Api";
 import PropTypes from "prop-types";
 import { useStyles } from "./PostDetailsStyles";
@@ -24,6 +27,8 @@ const PostDetails = () => {
   const params = useParams();
 
   const [post, setPost] = useState([]);
+  const [postData, setPostData] = useState([]);
+  const [userData, setUserData] = useState([]);
   const [userComments, setUserComments] = useState([]);
   const [userName, setUserName] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,6 +38,11 @@ const PostDetails = () => {
       let post = await fetchSinglePost(params.id);
       let comment = await fetchUserPostsComments(params.id);
       let username = await fetchSingleUser(params.id);
+      let users = await fetchUserData();
+      let posts = await fetchPostData();
+
+      setUserData(users.data);
+      setPostData(posts.data);
 
       setPost(post.data);
       setUserName(username.data);
@@ -42,9 +52,16 @@ const PostDetails = () => {
     fetchPost();
   }, []);
 
+  function randomColor() {
+    let hex = Math.floor(Math.random() * 0xffffff);
+    let color = "#" + hex.toString(16);
+
+    return color;
+  }
+
   return (
     <div className={classes.postDetailBC}>
-      <Appbar />
+      <Appbar userData={userData} postData={postData} />
       <Container id="fullpost">
         {loading ? (
           <Box
@@ -56,24 +73,26 @@ const PostDetails = () => {
             <CircularProgress />
           </Box>
         ) : (
-          <Box className={classes.root}>
-            <Typography
-              variant="h3"
-              gutterBottom
-              className={classes.titleName}
-              display="block"
-            >
-              {post.title}
-            </Typography>
+          <Box>
+            <Container className={classes.root} maxWidth="md">
+              <Typography
+                variant="h3"
+                gutterBottom
+                className={classes.titleName}
+                display="block"
+              >
+                {post.title}
+              </Typography>
 
-            <Typography
-              variant="body1"
-              gutterBottom
-              display="block"
-              className={classes.titleBody}
-            >
-              {post.body}
-            </Typography>
+              <Typography
+                variant="body1"
+                gutterBottom
+                display="block"
+                className={classes.titleBody}
+              >
+                {post.body}
+              </Typography>
+            </Container>
             <Container maxWidth="md">
               <Grid
                 container
@@ -95,17 +114,27 @@ const PostDetails = () => {
                         <CardContent>
                           <Typography
                             variant="h5"
-                            component="h2"
+                            style={{ display: "inline-flex" }}
                             className={classes.title}
                           >
-                            {comment.name}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            component="p"
-                            color="textSecondary"
-                          >
-                            {comment.body}
+                            <Avatar
+                              style={{
+                                alignSelf: "center",
+                                backgroundColor: randomColor(),
+                              }}
+                            >
+                              {comment.email.charAt(0).toUpperCase()}
+                            </Avatar>
+                            <p style={{ paddingLeft: "15px" }}>
+                              {comment.body}
+                              <Typography
+                                variant="body2"
+                                component="p"
+                                color="textSecondary"
+                              >
+                                {comment.email}
+                              </Typography>
+                            </p>
                           </Typography>
                         </CardContent>
                       </Card>
